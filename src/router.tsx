@@ -55,6 +55,7 @@ function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => vo
 }
 
 export const getRouter = () => {
+  // @ts-expect-error TanStack Router requires strictNullChecks; disabled project-wide for legacy code
   const router = createRouter({
     routeTree,
     context: {},
