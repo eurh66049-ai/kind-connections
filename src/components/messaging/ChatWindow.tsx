@@ -79,7 +79,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   };
 
   const isOtherUserOnline = useCallback(() => {
-    if (isAiBot) return true;
+    if (isAiBot) return false;
     if (!otherUser.last_seen) return false;
     const lastSeen = new Date(otherUser.last_seen);
     const now = new Date();
@@ -87,7 +87,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   }, [otherUser.last_seen, isAiBot]);
 
   const getActivityStatus = useCallback(() => {
-    if (isAiBot) return 'متصل دائماً • مساعد ذكي';
+    if (isAiBot) return 'مساعد ذكي';
     if (isOtherUserOnline()) return 'متصل الآن';
     if (!otherUser.last_seen) return 'غير متصل';
     return `آخر ظهور ${formatDistanceToNow(new Date(otherUser.last_seen), { addSuffix: true, locale: ar })}`;
